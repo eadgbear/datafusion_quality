@@ -886,12 +886,15 @@ mod tests {
             Field::new("score", DataType::Float64, true),
         ]);
 
-        let batch = RecordBatch::try_new(Arc::new(schema), vec![
-            Arc::new(Int32Array::from(vec![1, 2, 3])),
-            Arc::new(StringArray::from(vec!["Alice", "Bob", "Charlie"])),
-            Arc::new(Int32Array::from(vec![Some(25), None, Some(30)])),
-            Arc::new(Float64Array::from(vec![Some(85.5), Some(92.0), None])),
-        ])
+        let batch = RecordBatch::try_new(
+            Arc::new(schema),
+            vec![
+                Arc::new(Int32Array::from(vec![1, 2, 3])),
+                Arc::new(StringArray::from(vec!["Alice", "Bob", "Charlie"])),
+                Arc::new(Int32Array::from(vec![Some(25), None, Some(30)])),
+                Arc::new(Float64Array::from(vec![Some(85.5), Some(92.0), None])),
+            ],
+        )
         .unwrap();
 
         let ctx = SessionContext::new();
@@ -1258,16 +1261,19 @@ mod tests {
             Field::new("text", DataType::Utf8, true),
         ]);
 
-        let batch = RecordBatch::try_new(Arc::new(schema), vec![
-            Arc::new(Int32Array::from(vec![1, 2, 3, 4, 5])),
-            Arc::new(StringArray::from(vec![
-                Some(""),       // empty string
-                Some("a"),      // length 1
-                Some("abc"),    // length 3
-                Some("abcdef"), // length 6
-                None,           // null
-            ])),
-        ])
+        let batch = RecordBatch::try_new(
+            Arc::new(schema),
+            vec![
+                Arc::new(Int32Array::from(vec![1, 2, 3, 4, 5])),
+                Arc::new(StringArray::from(vec![
+                    Some(""),       // empty string
+                    Some("a"),      // length 1
+                    Some("abc"),    // length 3
+                    Some("abcdef"), // length 6
+                    None,           // null
+                ])),
+            ],
+        )
         .unwrap();
 
         let ctx = SessionContext::new();

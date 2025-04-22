@@ -17,10 +17,13 @@ impl TableRule for NullCountRule {
         let new_column_name = self.new_column_name(column_name);
         let subquery = if !self.negated.unwrap_or(false) {
             df.clone()
-                .aggregate(vec![], vec![
-                    count_all().alias("count_all"),
-                    count(col(column_name)).alias(new_column_name.as_str()),
-                ])?
+                .aggregate(
+                    vec![],
+                    vec![
+                        count_all().alias("count_all"),
+                        count(col(column_name)).alias(new_column_name.as_str()),
+                    ],
+                )?
                 .select(vec![
                     col("count_all")
                         .sub(col(new_column_name.as_str()))
@@ -843,12 +846,15 @@ mod tests {
             Some(88.5),
         ]);
 
-        let batch = RecordBatch::try_new(Arc::new(schema), vec![
-            Arc::new(id_data),
-            Arc::new(name_data),
-            Arc::new(age_data),
-            Arc::new(score_data),
-        ])
+        let batch = RecordBatch::try_new(
+            Arc::new(schema),
+            vec![
+                Arc::new(id_data),
+                Arc::new(name_data),
+                Arc::new(age_data),
+                Arc::new(score_data),
+            ],
+        )
         .unwrap();
 
         let ctx = SessionContext::new();

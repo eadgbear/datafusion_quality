@@ -267,12 +267,15 @@ mod tests {
             Some(88.5),
         ]);
 
-        let batch = RecordBatch::try_new(Arc::new(schema), vec![
-            Arc::new(id_data),
-            Arc::new(name_data),
-            Arc::new(age_data),
-            Arc::new(score_data),
-        ])
+        let batch = RecordBatch::try_new(
+            Arc::new(schema),
+            vec![
+                Arc::new(id_data),
+                Arc::new(name_data),
+                Arc::new(age_data),
+                Arc::new(score_data),
+            ],
+        )
         .unwrap();
 
         let ctx = SessionContext::new();
