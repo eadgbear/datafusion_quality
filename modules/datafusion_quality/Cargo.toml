@@ -1,0 +1,23 @@
+[package]
+name = "datafusion-quality"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+description.workspace = true
+license.workspace = true
+
+[dependencies]
+arrow.workspace = true
+datafusion.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde_yaml.workspace = true
+snafu.workspace = true
+strum = { version = "0.27.1", features = ["derive"] }
+
+[dev-dependencies]
+tokio.workspace = true
+
+[[example]]
+name = "basic"
+path = "examples/basic/src/main.rs" 
