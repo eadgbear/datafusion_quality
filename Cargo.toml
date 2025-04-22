@@ -11,6 +11,7 @@ authors = ["Ada Lyons <ada.g.lyons@gmail.com>"]
 description = "Data quality tools for DataFusion"
 license = "Apache-2.0"
 readme = "README.md"
+homepage = "https://github.com/eadgbear/datafusion_quality"
 
 [workspace.dependencies]
 arrow = { version = "54.3.1", features = ["prettyprint"] }
